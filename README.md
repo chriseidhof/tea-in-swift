@@ -1,5 +1,7 @@
 # The Elm Architecture in Swift
 
+This project is a port of [The Elm Architecture](https://guide.elm-lang.org/architecture/) to Swift.
+
 This is sample code, and not at all production-ready. It's a proof-of-concept, it seems to work well and I don't think there are major roadblocks (except adding all of UIKit to the virtual views layer).
 
 Open the workspace, and look at the playgrounds. It shows some examples. (Even though the playgrounds currently don't seem to run).
@@ -7,5 +9,14 @@ Open the workspace, and look at the playgrounds. It shows some examples. (Even t
 Then go to AppDelegate, and run one of the three apps (uncomment the right lines to run one of them).
 
 This is part of an upcoming project I'm working on, and I am planning to write up documentation for usage and implementation (at some point).
+
+There are three sample apps:
+
+- [Empty app](https://github.com/chriseidhof/tea-in-swift/blob/master/Todos/TodosFramework/EmptyApp.swift)
+- [GIF loading](https://github.com/chriseidhof/tea-in-swift/blob/master/Todos/TodosFramework/GifApp.swift)
+- [Todo List](https://github.com/chriseidhof/tea-in-swift/blob/master/Todos/TodosFramework/TodosApp.swift)
+
+
+For more Elm-like frameworks in Swift, see Yasuhiro Inami's [excellent list](https://gist.github.com/inamiy/bd257c60e670de8a144b1f97a07bacec).
 
 Enjoy!
