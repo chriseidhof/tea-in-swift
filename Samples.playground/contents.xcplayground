@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios'>
+    <pages>
+        <page name='Counter, No Interaction'/>
+        <page name='Counter with Interaction'/>
+        <page name='Commands'/>
+        <page name='Network Request - GIF App'/>
+        <page name='Subscriptions'/>
+    </pages>
+</playground>
