@@ -20,3 +20,9 @@ There are three sample apps:
 For more Elm-like frameworks in Swift, see Yasuhiro Inami's [excellent list](https://gist.github.com/inamiy/bd257c60e670de8a144b1f97a07bacec).
 
 Enjoy!
+
+---
+
+Notes: 
+
+- If you come from a functional language such as Elm or Haskell, you might be put off by the fact that `send` is marked as `mutating`. Don't be fooled: it behaves very similar to Elm/Haskell. You still have value semantics, and you can still have a time-traveling debugger. See [structs and mutation](http://chris.eidhof.nl/post/structs-and-mutation-in-swift/) or [undo history](http://chris.eidhof.nl/post/undo-history-in-swift/) for some more info on that.
