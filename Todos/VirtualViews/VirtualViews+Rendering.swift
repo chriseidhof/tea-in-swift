@@ -2,6 +2,9 @@ import UIKit
 
 public struct StrongReferences {
 	private var handlers: [Any] = []
+
+    public init() {}
+
 	public mutating func append(_ obj: Any) {
 		handlers.append(obj)
 	}
@@ -56,7 +59,9 @@ class TableViewBacking<A>: NSObject, UITableViewDataSource, UITableViewDelegate 
 	}
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: reusableCellIdentifier, for: indexPath)
-		cell.textLabel?.text = cells[indexPath.row].text
+        let item = cells[indexPath.row]
+		cell.textLabel?.text = item.text
+        cell.accessoryType = item.accessory
 		return cell
 	}
 	
@@ -210,6 +215,10 @@ public struct Renderer<A> {
 			let result = UITableView(frame: .zero, style: .plain)
 			render(tableView, into: result)
 			return result
+        case let .activityIndicator(style):
+            let result = UIActivityIndicatorView(activityIndicatorStyle: style)
+            result.startAnimating()
+            return result
 		}
 	}
 	
@@ -227,6 +236,12 @@ public struct Renderer<A> {
 			}
 			render(label: text, into: l)
 			return l
+        case let .activityIndicator(style: style):
+            guard let a = existing as? UIActivityIndicatorView else {
+                return render(view: view)
+            }
+            a.activityIndicatorViewStyle = style
+            return a
 		case let ._stackView(stackView):
 			guard let result = existing as? UIStackView, result.arrangedSubviews.count == stackView.views.count else {
 				return render(view: view)

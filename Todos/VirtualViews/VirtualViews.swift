@@ -49,6 +49,10 @@ public struct StackView<A> {
 public struct TableView<A> {
     public let items: [TableViewCell<A>]
     
+    public init(items: [TableViewCell<A>]) {
+        self.items = items
+    }
+
     func map<B>(_ transform: @escaping (A) -> B) -> TableView<B> {
         return TableView<B>(items: items.map( { item in item.map(transform) }))
     }
@@ -58,8 +62,10 @@ public struct TableViewCell<Action> {
     public let text: String
     public let onSelect: Action?
     public let onDelete: Action?
-    public init(text: String, onSelect: Action?, onDelete: Action?) {
+    public let accessory: UITableViewCellAccessoryType
+    public init(text: String, onSelect: Action?, accessory: UITableViewCellAccessoryType = .none, onDelete: Action?) {
         self.text = text
+        self.accessory = accessory
         self.onSelect = onSelect
         self.onDelete = onDelete
     }
@@ -154,6 +160,7 @@ indirect public enum View<A> {
     case _stackView(StackView<A>)
     case _slider(Slider<A>)
     case tableView(TableView<A>)
+    case activityIndicator(style: UIActivityIndicatorViewStyle)
     
     func map<B>(_ transform: @escaping (A) -> B) -> View<B> {
         switch self {
@@ -171,6 +178,8 @@ indirect public enum View<A> {
             return ._slider(s.map(transform))
         case let .tableView(t):
             return .tableView(t.map(transform))
+        case let .activityIndicator(style):
+            return .activityIndicator(style: style)
         }
     }
 }
