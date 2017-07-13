@@ -29,7 +29,7 @@ extension Counter: RootComponent {
     }
     
     //: Our view controller consists of a single label with the current count
-    var viewController: VC<Message> {
+    var viewController: ViewController<Message> {
         return .viewController(.label(text: "Count: \(count)"))
     }
     
