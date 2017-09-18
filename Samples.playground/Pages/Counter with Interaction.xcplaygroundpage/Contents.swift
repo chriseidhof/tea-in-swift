@@ -1,6 +1,7 @@
 import UIKit
 import TodosFramework
 import VirtualViews
+import PlaygroundSupport
 
 //: We'll re-use our previous state, but will add interaction to it.
 struct Counter {
@@ -32,7 +33,7 @@ extension Counter: RootComponent {
         return .viewController(.stackView(views: [
             .label(text: "Count: \(count)"),
             .button(text: "Increment", onTap: .increment)
-            ])
+            ]))
     }
     
     var subscriptions: [Subscription<Message>] {
@@ -43,7 +44,7 @@ extension Counter: RootComponent {
 //: The only way to change the state is through sending a message. Because the `Driver` will take care of updating the view hierarchy, it is not possible to forget to update your views when the state changes. This all happens automatically.
 
 let driver = Driver(Counter(count: 0))
-PlaygroundPage.current.liveView = driver.viewController.view
+PlaygroundPage.current.liveView = driver.viewController
 
 extension Counter.Message: Equatable {
     static func ==(lhs: Counter.Message, rhs: Counter.Message) -> Bool {

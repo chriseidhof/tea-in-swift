@@ -57,5 +57,4 @@ extension Counter.Message: Equatable {
     }
 }
 
-//: TODO: this doesn't work on my current Xcode, but will probably work in the future again:
-//: `PlaygroundPage.current.liveView = driver.viewController`
+PlaygroundPage.current.liveView = driver.viewController
